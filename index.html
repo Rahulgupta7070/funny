@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sorry Sahumia</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#fff5f7;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+overflow:hidden;
+}
+
+.container{
+max-width:400px;
+}
+
+.gif{
+width:200px;
+margin-bottom:20px;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff4d6d;
+color:white;
+}
+
+#no{
+background:white;
+border:2px solid #ff4d6d;
+color:#ff4d6d;
+position:fixed;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img id="gif" class="gif"
+src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif">
+
+<h2>Mujhe maaf kar di Saumya? 🥺</h2>
+
+<button id="yes">Yes</button>
+<button id="no">No</button>
+
+<p id="message"></p>
+
+</div>
+
+<audio id="sound" src="sorry.mp3"></audio>
+
+<script>
+
+let sound=document.getElementById("sound");
+
+document.getElementById("yes").onclick=function(){
+
+sound.play();
+
+document.getElementById("gif").src=
+"https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif";
+
+document.getElementById("message").innerHTML=
+"Thank you Saumya cutee ❤️ Main promise karta hu dubara aisi galti nahi hogi.";
+
+};
+
+let noBtn=document.getElementById("no");
+let moveCount=0;
+
+noBtn.addEventListener("mouseover",function(){
+
+moveCount++;
+
+if(moveCount<=4){
+
+let x=Math.random()*window.innerWidth;
+let y=Math.random()*window.innerHeight;
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+}
+
+});
+
+noBtn.onclick=function(){
+
+sound.play();
+
+document.getElementById("message").innerHTML=
+"Please ek chance aur de do 🥺";
+
+};
+
+</script>
+
+</body>
+</html>
