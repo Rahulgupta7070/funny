@@ -1,63 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sorry Sahumia</title>
+<title>Eid Mubarak</title>
 
 <style>
 
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
 body{
-font-family:Arial;
-background:#fff5f7;
+font-family:Arial, sans-serif;
+background:linear-gradient(#0f2027,#203a43,#2c5364);
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-text-align:center;
+color:white;
 overflow:hidden;
 }
 
-.container{
-max-width:400px;
+/* stars */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
 }
 
-.gif{
-width:200px;
-margin-bottom:20px;
+@keyframes twinkle{
+from{opacity:0.3}
+to{opacity:1}
+}
+
+/* moon */
+
+.moon{
+position:absolute;
+top:50px;
+right:40px;
+width:70px;
+height:70px;
+background:#ffd700;
+border-radius:50%;
+box-shadow:0 0 30px #ffd700;
+}
+
+/* mosque */
+
+.mosque{
+position:absolute;
+bottom:0;
+width:100%;
+height:100px;
+background:black;
+clip-path: polygon(0% 100%,0% 70%,10% 60%,20% 70%,30% 55%,40% 70%,50% 50%,60% 70%,70% 55%,80% 70%,90% 60%,100% 70%,100% 100%);
+}
+
+/* container */
+
+.container{
+background:rgba(255,255,255,0.1);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+text-align:center;
+width:90%;
+max-width:400px;
+z-index:1;
+}
+
+/* circle image */
+
+.profile-img{
+width:120px;
+height:120px;
+margin:0 auto 15px auto;
+border-radius:50%;
+overflow:hidden;
+border:4px solid #ffd700;
+box-shadow:0 0 15px #ffd700;
+}
+
+.profile-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* heading */
+
+h1{
+color:#ffd700;
+font-size:32px;
+text-shadow:0 0 10px #ffd700;
 }
 
 button{
-padding:12px 25px;
-margin:10px;
+padding:10px 20px;
+margin:8px;
 border:none;
 border-radius:25px;
-font-size:16px;
+background:#ffd700;
+font-size:14px;
 cursor:pointer;
+transition:0.3s;
 }
 
-#yes{
-background:#ff4d6d;
-color:white;
-}
-
-#no{
+button:hover{
+transform:scale(1.05);
 background:white;
-border:2px solid #ff4d6d;
-color:#ff4d6d;
-position:fixed;
 }
 
-.sms-btn{
-background:#25D366;
-color:white;
-padding:10px 20px;
-border:none;
-border-radius:20px;
-margin-top:10px;
-cursor:pointer;
+#message{
+margin-top:15px;
+font-size:16px;
+}
+
+#gift{
+font-size:70px;
+display:none;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+}
+
+/* fireworks */
+
+.firework{
+position:absolute;
+font-size:20px;
+animation:boom 1s linear forwards;
+}
+
+@keyframes boom{
+0%{opacity:1; transform:scale(0)}
+100%{opacity:0; transform:scale(3)}
+}
+
+/* from */
+
+.from{
+margin-top:15px;
+font-size:14px;
+color:#ffd700;
+}
+
+/* mobile */
+
+@media(max-width:500px){
+
+h1{
+font-size:26px;
+}
+
+button{
+width:100%;
+}
+
 }
 
 </style>
@@ -65,69 +175,99 @@ cursor:pointer;
 
 <body>
 
+<div class="moon"></div>
+<div class="mosque"></div>
+
 <div class="container">
 
-<img id="gif" class="gif"
-src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif">
+<div class="profile-img">
+<img src="./fff.jpeg" alt="Eid Image">
+</div>
 
-<h2>Mujhe maaf kar di Saumya? 🥺</h2>
+<h1>🌙 Eid Mubarak 🌙</h1>
 
-<button id="yes">Yes</button>
-<button id="no">No</button>
+<p>Mere pyare dost ke liye</p>
+
+<button onclick="wish()">Open Wish</button>
+<button onclick="dua()">Dua 🤲</button>
+<button onclick="surprise()">Surprise 🎁</button>
 
 <p id="message"></p>
 
-</div>
+<div id="gift">🎁</div>
 
-<audio id="sound" src="sorry.mp3"></audio>
+<p class="from">Rahul ke taraf se ❤️</p>
+
+</div>
 
 <script>
 
-let sound=document.getElementById("sound");
+/* stars */
 
-document.getElementById("yes").onclick=function(){
+for(let i=0;i<60;i++){
 
-sound.play();
+let star=document.createElement("div");
 
-document.getElementById("gif").src=
-"https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif";
+star.className="star";
 
-document.getElementById("message").innerHTML=
-`Thank you Saumya cutee ❤️ <br>
-Main promise karta hu dubara aisi galti nahi hogi.<br><br>
+star.style.left=Math.random()*100+"%";
 
-Agar tumne mujhe maaf kar diya hai to SMS bhej do 😊on this number 7070629414
-</a>`;
+star.style.top=Math.random()*100+"%";
 
-};
-
-let noBtn=document.getElementById("no");
-let moveCount=0;
-
-noBtn.addEventListener("mouseover",function(){
-
-moveCount++;
-
-if(moveCount<=4){
-
-let x=Math.random()*window.innerWidth;
-let y=Math.random()*window.innerHeight;
-
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
+document.body.appendChild(star);
 
 }
 
-});
+/* messages */
 
-noBtn.onclick=function(){
+function wish(){
 
-sound.play();
+document.getElementById("message").innerHTML =
+"Eid Mubarak! Allah tumhari zindagi khushiyon aur barkat se bhar de.";
 
-document.getElementById("message").innerHTML=
-"Please ek chance aur de do 🥺";
+}
 
-};
+function dua(){
+
+document.getElementById("message").innerHTML =
+"Allah tumhe success, health aur happiness de. Ameen.";
+
+}
+
+function surprise(){
+
+document.getElementById("gift").style.display="block";
+
+document.getElementById("message").innerHTML =
+"🎉 Surprise! Aaj biryani meri taraf se 😄";
+
+fireworks();
+
+}
+
+/* fireworks */
+
+function fireworks(){
+
+for(let i=0;i<20;i++){
+
+let fw=document.createElement("div");
+
+fw.className="firework";
+
+fw.innerHTML="🎆";
+
+fw.style.left=Math.random()*100+"%";
+
+fw.style.top=Math.random()*80+"%";
+
+document.body.appendChild(fw);
+
+setTimeout(()=>fw.remove(),1000);
+
+}
+
+}
 
 </script>
 
