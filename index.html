@@ -3,25 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eid Mubarak</title>
+<title>Eid Mubarak Rahul</title>
 
 <style>
-
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
 body{
-font-family:Arial, sans-serif;
-background:linear-gradient(#0f2027,#203a43,#2c5364);
 height:100vh;
+overflow:hidden;
+}
+
+/* pages */
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
+flex-direction:column;
+transition:1s;
+}
+
+/* page1 */
+
+#page1{
+background:linear-gradient(135deg,#141e30,#243b55);
 color:white;
+}
+
+#page1 h1{
+font-size:35px;
+margin-bottom:20px;
+animation:fade 2s infinite alternate;
+}
+
+@keyframes fade{
+from{opacity:0.5}
+to{opacity:1}
+}
+
+#page1 button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ffd700;
+cursor:pointer;
+font-size:16px;
+}
+
+/* page2 */
+
+#page2{
+background:linear-gradient(#0f2027,#203a43,#2c5364);
+color:white;
+opacity:0;
+pointer-events:none;
+}
+
+/* active */
+
+.active{
+opacity:1 !important;
+pointer-events:auto !important;
+}
+
+/* moon */
+
+.moon{
+position:absolute;
+top:40px;
+right:30px;
+width:70px;
+height:70px;
+background:#ffd700;
+border-radius:50%;
+box-shadow:0 0 30px #ffd700;
+}
+
+/* container */
+
+.container{
+background:rgba(255,255,255,0.1);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+text-align:center;
+width:90%;
+max-width:400px;
+}
+
+/* image */
+
+.profile-img{
+width:110px;
+height:110px;
+margin:auto;
+border-radius:50%;
 overflow:hidden;
+border:3px solid #ffd700;
+}
+
+.profile-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+h1{
+color:#ffd700;
+margin-top:10px;
+}
+
+/* buttons */
+
+button{
+padding:10px 20px;
+margin:8px;
+border:none;
+border-radius:25px;
+background:#ffd700;
+cursor:pointer;
+}
+
+/* typing effect */
+
+#message{
+margin-top:15px;
+min-height:40px;
+}
+
+/* gift */
+
+#gift{
+font-size:60px;
+display:none;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-10px)}
 }
 
 /* stars */
@@ -40,153 +167,33 @@ from{opacity:0.3}
 to{opacity:1}
 }
 
-/* moon */
-
-.moon{
-position:absolute;
-top:50px;
-right:40px;
-width:70px;
-height:70px;
-background:#ffd700;
-border-radius:50%;
-box-shadow:0 0 30px #ffd700;
-}
-
-/* mosque */
-
-.mosque{
-position:absolute;
-bottom:0;
-width:100%;
-height:100px;
-background:black;
-clip-path: polygon(0% 100%,0% 70%,10% 60%,20% 70%,30% 55%,40% 70%,50% 50%,60% 70%,70% 55%,80% 70%,90% 60%,100% 70%,100% 100%);
-}
-
-/* container */
-
-.container{
-background:rgba(255,255,255,0.1);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-text-align:center;
-width:90%;
-max-width:400px;
-z-index:1;
-}
-
-/* circle image */
-
-.profile-img{
-width:120px;
-height:120px;
-margin:0 auto 15px auto;
-border-radius:50%;
-overflow:hidden;
-border:4px solid #ffd700;
-box-shadow:0 0 15px #ffd700;
-}
-
-.profile-img img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* heading */
-
-h1{
-color:#ffd700;
-font-size:32px;
-text-shadow:0 0 10px #ffd700;
-}
-
-button{
-padding:10px 20px;
-margin:8px;
-border:none;
-border-radius:25px;
-background:#ffd700;
-font-size:14px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-background:white;
-}
-
-#message{
-margin-top:15px;
-font-size:16px;
-}
-
-#gift{
-font-size:70px;
-display:none;
-animation:bounce 1s infinite;
-}
-
-@keyframes bounce{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-}
-
-/* fireworks */
-
-.firework{
-position:absolute;
-font-size:20px;
-animation:boom 1s linear forwards;
-}
-
-@keyframes boom{
-0%{opacity:1; transform:scale(0)}
-100%{opacity:0; transform:scale(3)}
-}
-
-/* from */
-
-.from{
-margin-top:15px;
-font-size:14px;
-color:#ffd700;
-}
-
-/* mobile */
-
-@media(max-width:500px){
-
-h1{
-font-size:26px;
-}
-
-button{
-width:100%;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+<h1>🌙 Eid Mubarak 🌙</h1>
+<p>Click below for surprise</p>
+<br>
+<button onclick="openPage()">Enter</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+
 <div class="moon"></div>
-<div class="mosque"></div>
 
 <div class="container">
 
 <div class="profile-img">
-<img src="./fff.jpeg" alt="Eid Image">
+<img src="./fff.jpeg">
 </div>
 
-<h1>🌙 Eid Mubarak 🌙</h1>
+<h1>Eid Mubarak</h1>
 
-<p>Mere pyare dost ke liye</p>
+<p>Mere pyare dost ke liye ❤️</p>
 
 <button onclick="wish()">Open Wish</button>
 <button onclick="dua()">Dua 🤲</button>
@@ -196,77 +203,80 @@ width:100%;
 
 <div id="gift">🎁</div>
 
-<p class="from">Rahul ke taraf se ❤️</p>
+<p style="margin-top:10px;color:#ffd700;">Rahul ke taraf se</p>
 
+</div>
 </div>
 
 <script>
 
+/* page switch */
+
+function openPage(){
+document.getElementById("page1").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").classList.add("active");
+},500);
+}
+
 /* stars */
 
 for(let i=0;i<60;i++){
-
 let star=document.createElement("div");
-
 star.className="star";
-
 star.style.left=Math.random()*100+"%";
-
 star.style.top=Math.random()*100+"%";
-
 document.body.appendChild(star);
-
 }
 
-/* messages */
+/* typing effect */
+
+function typeText(text){
+let i=0;
+let speed=40;
+let msg=document.getElementById("message");
+msg.innerHTML="";
+
+function typing(){
+if(i<text.length){
+msg.innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,speed);
+}
+}
+typing();
+}
+
+/* buttons */
 
 function wish(){
-
-document.getElementById("message").innerHTML =
-"Eid Mubarak! Allah tumhari zindagi khushiyon aur barkat se bhar de.";
-
+typeText("Eid Mubarak! Allah tumhari zindagi khushiyon se bhar de ✨");
 }
 
 function dua(){
-
-document.getElementById("message").innerHTML =
-"Allah tumhe success, health aur happiness de. Ameen.";
-
+typeText("Allah tumhe success, health aur happiness de. Ameen 🤲");
 }
 
 function surprise(){
-
 document.getElementById("gift").style.display="block";
-
-document.getElementById("message").innerHTML =
-"🎉 Surprise! Aaj kuchh nhi milega meri taraf se 😄";
-
+typeText("🎉 Surprise! Aaj tumhe Biryani milega mere trf se hai 😄");
 fireworks();
-
 }
 
 /* fireworks */
 
 function fireworks(){
-
 for(let i=0;i<20;i++){
-
 let fw=document.createElement("div");
-
-fw.className="firework";
-
 fw.innerHTML="🎆";
-
+fw.style.position="absolute";
 fw.style.left=Math.random()*100+"%";
-
 fw.style.top=Math.random()*80+"%";
-
 document.body.appendChild(fw);
 
 setTimeout(()=>fw.remove(),1000);
-
 }
-
 }
 
 </script>
